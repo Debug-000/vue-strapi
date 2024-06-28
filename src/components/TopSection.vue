@@ -24,6 +24,10 @@ const fetchPosts = async () => {
   }
 }
 
+const getPostByIndex = (index: number): Post | undefined => {
+  return posts.value[index]
+}
+
 onMounted(() => {
   fetchPosts()
 })
@@ -44,10 +48,12 @@ onMounted(() => {
       />
     </div>
     <div class="w-full md:w-[45%]" v-if="posts.length">
-      <div v-for="post in posts" :key="post.id">
-        <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">{{ post.attributes.Title }}</h1>
+      <div v-if="posts.length > 0">
+        <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">
+          {{ getPostByIndex(0)?.attributes.Title }}
+        </h1>
         <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7">
-          {{ post.attributes.Description }}
+          {{ getPostByIndex(0)?.attributes.Description }}
         </p>
       </div>
     </div>
