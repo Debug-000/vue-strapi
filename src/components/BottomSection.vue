@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="flex flex-col gap-4 py-[7rem]">
-    <h1 class="blinker-bold text-white text-[3.5rem]">Who we are?</h1>
+  <div class="flex flex-col gap-4 py-[9rem] px-4">
+    <h1 class="blinker-bold text-white text-[3.5rem]">What we do ?</h1>
     <div class="flex flex-col gap-4">
       <p class="blinker-regular text-white leading-7">
         We’ve made our mark with a dynamic healthcare web application designed for the US market.
@@ -20,7 +20,7 @@
         businesses, fostering collaboration, and paving the way for the future of technology.
       </p>
     </div>
-    <h2 class="blinker-semibold text-white text-[1.8rem]">
+    <h2 class="blinker-semibold text-white text-[1.6rem]">
       Welcome to the team. Together, we’ll shape the future of software development.
     </h2>
   </div>

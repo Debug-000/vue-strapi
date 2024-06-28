@@ -15,14 +15,15 @@
       />
     </div>
     <div class="w-full md:w-[45%]">
-      <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">Who we are?</h1>
-      <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7">
-        We are GQLTeam, a software company rooted in Romania, connecting the world with high-quality
-        software solutions. Specialized in GraphQL and Golang, we leverage these advanced
-        technologies to provide top-tier services. Our mission is to outsource talented developers
-        from across Eastern and Southern Europe, and to create custom software solutions that fit
-        your unique needs perfectly.
+      <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">Hello!</h1>
+      <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7 mb-12">
+        And welcome to GQLTeam! I’m Dan, the founder of this passionate and dedicated team. Our
+        story began as a shared dream – to create a company that combines innovative software
+        solutions with a strong ethos of teamwork and collaboration.
       </p>
+      <a href="#" class="text-white bg-[#497DFF] hover:bg-[#040E56] blinker-semibold py-4 px-6"
+        >Our Service</a
+      >
     </div>
   </div>
 </template>

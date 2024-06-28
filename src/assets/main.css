@@ -16,6 +16,11 @@ body {
   scroll-behavior: smooth;
 }
 
+::selection {
+  color: #fff;
+  background-color: #333333;
+}
+
 html::-webkit-scrollbar {
   display: none;
 }
@@ -32,10 +37,23 @@ body {
 .back-home {
   background: url(./overlaybanner.png);
   background-position: bottom;
+  background-size: auto;
+}
+
+.sec-home {
+  background: url(./overlaybanner.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.guys-home {
+  background-image: linear-gradient(0deg, #040e56ea, #040e56ea), url(./guys.jpg);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .blinker-thin {
   font-family: 'Blinker', sans-serif;
   font-weight: 100;

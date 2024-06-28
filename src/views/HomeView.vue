@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import BottomSection from '@/components/BottomSection.vue'
 import HeaderText from '@/components/HeaderText.vue'
-import TeamFooter from '@/components/TeamFooter.vue'
 import TopSection from '@/components/TopSection.vue'
 </script>
 
@@ -11,7 +10,7 @@ import TopSection from '@/components/TopSection.vue'
       <img
         src="../assets/overlay-right.png"
         alt="right"
-        class="absolute top-[-30rem] right-0 z-10"
+        class="absolute top-[-38rem] right-0 z-10 w-[160rem] h-[100rem] pointer-events-none"
       />
       <HeaderText title="Home" desc="There is no `I` in GraphQL" />
     </div>
@@ -20,16 +19,15 @@ import TopSection from '@/components/TopSection.vue'
         <TopSection />
       </div>
     </div>
-    <div class="back-home relative">
+    <div class="sec-home relative h-auto overflow-hidden">
       <div class="max-w-[1140px] m-auto">
         <img
           src="../assets/overlay-left.png"
           alt="right"
-          class="absolute top-[-10rem] left-0 z-10 w-[90%] opacity-55 h-[45rem] object-cover"
+          class="absolute top-[0rem] left-0 z-10 w-full opacity-55 h-[41rem] object-cover pointer-events-none"
         />
         <BottomSection />
       </div>
     </div>
-    <TeamFooter />
   </main>
 </template>
