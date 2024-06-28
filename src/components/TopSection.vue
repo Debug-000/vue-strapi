@@ -1,4 +1,33 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+interface Post {
+  id: number
+  attributes: {
+    Title: string
+    Description: string
+    createdAt: string
+    updatedAt: string
+    publishedAt: string
+  }
+}
+
+const posts = ref<Post[]>([])
+
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get('http://localhost:1337/api/posts')
+    posts.value = response.data.data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+onMounted(() => {
+  fetchPosts()
+})
+</script>
 
 <template>
   <div class="md:flex-row flex-col flex justify-center items-center w-full gap-8 px-4">
@@ -14,15 +43,13 @@
         class="w-[28rem] absolute bottom-0 left-0 h-[18rem] object-cover"
       />
     </div>
-    <div class="w-full md:w-[45%]">
-      <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">Who we are?</h1>
-      <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7">
-        We are GQLTeam, a software company rooted in Romania, connecting the world with high-quality
-        software solutions. Specialized in GraphQL and Golang, we leverage these advanced
-        technologies to provide top-tier services. Our mission is to outsource talented developers
-        from across Eastern and Southern Europe, and to create custom software solutions that fit
-        your unique needs perfectly.
-      </p>
+    <div class="w-full md:w-[45%]" v-if="posts.length">
+      <div v-for="post in posts" :key="post.id">
+        <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">{{ post.attributes.Title }}</h1>
+        <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7">
+          {{ post.attributes.Description }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
