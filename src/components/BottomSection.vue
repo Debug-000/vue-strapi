@@ -1,61 +1,63 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import gql from 'graphql-tag'
+import { useQuery } from '@vue/apollo-composable'
+import { computed } from 'vue'
 
 interface Post {
-  id: number
-  attributes: {
-    Title: string
-    Description: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-  }
+  Title: string
+  Description: string
+  Descript: string
+  Desc: string
+  SecondHeading: string
 }
 
-const posts = ref<Post[]>([])
-
-const fetchPosts = async () => {
-  try {
-    const response = await axios.get('http://localhost:1337/api/posts')
-    posts.value = response.data.data
-  } catch (error) {
-    console.error(error)
+const firstComp = gql`
+  query {
+    homePosts {
+      data {
+        attributes {
+          Title
+          Description
+          Descript
+          Desc
+          SecondHeading
+        }
+      }
+    }
   }
-}
+`
+
+const { result, loading, error } = useQuery(firstComp)
+
+const posts = computed(() => {
+  if (loading.value || error.value) return []
+  return result.value?.homePosts.data.map((post: { attributes: any }) => post.attributes) ?? []
+})
 
 const getPostByIndex = (index: number): Post | undefined => {
   return posts.value[index]
 }
-
-onMounted(() => {
-  fetchPosts()
-})
 </script>
 
 <template>
   <div v-if="posts.length">
     <div class="flex flex-col gap-4 py-[9rem] px-4" v-if="posts.length > 0">
       <h1 class="blinker-bold text-white text-[3.5rem]">
-        {{ getPostByIndex(1)?.attributes.Title }}
+        {{ getPostByIndex(1)?.Title }}
       </h1>
       <div class="flex flex-col gap-4">
         <p class="blinker-regular text-white leading-7">
-          {{ getPostByIndex(1)?.attributes.Description }}
+          {{ getPostByIndex(1)?.Description }}
         </p>
         <p class="blinker-regular text-white leading-7">
-          At GQLTeam, you’re not just engaging a service provider; you’re partnering with a team
-          that understands the transformative power of robust software solutions. We’re here to
-          bring your visions to life as functional, scalable, and secure software that not just
-          meets, but exceeds your expectations.
+          {{ getPostByIndex(1)?.Desc }}
         </p>
         <p class="blinker-regular text-white leading-7">
-          At GQLTeam, we’re not just a software company. We’re a team committed to empowering
-          businesses, fostering collaboration, and paving the way for the future of technology.
+          {{ getPostByIndex(1)?.Descript }}
         </p>
       </div>
       <h2 class="blinker-semibold text-white text-[1.6rem]">
-        Welcome to the team. Together, we’ll shape the future of software development.
+        {{ getPostByIndex(1)?.SecondHeading }}
       </h2>
     </div>
   </div>

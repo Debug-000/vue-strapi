@@ -21,9 +21,9 @@ import ShowcaseSecond from '@/components/ShowcaseSecond.vue'
   <div class="sec-home relative h-auto overflow-hidden">
     <div class="max-w-[1140px] m-auto">
       <img
-        src="../assets/overlay-left.png"
+        src="../assets/overlay-right.png"
         alt="right"
-        class="absolute top-[0rem] left-0 z-10 w-full opacity-55 h-[41rem] object-cover pointer-events-none"
+        class="absolute top-[-10rem] right-[10rem] z-10 w-full opacity-55 h-[61rem] object-contain pointer-events-none"
       />
       <ShowcaseSecond />
     </div>

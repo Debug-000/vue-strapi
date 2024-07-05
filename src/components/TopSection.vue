@@ -1,36 +1,42 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import gql from 'graphql-tag'
+import { useQuery } from '@vue/apollo-composable'
+import { computed } from 'vue'
 
 interface Post {
-  id: number
-  attributes: {
-    Title: string
-    Description: string
-    createdAt: string
-    updatedAt: string
-    publishedAt: string
-  }
+  Title: string
+  Description: string
+  Descript: string
+  Desc: string
+  SecondHeading: string
 }
 
-const posts = ref<Post[]>([])
-
-const fetchPosts = async () => {
-  try {
-    const response = await axios.get('http://localhost:1337/api/posts')
-    posts.value = response.data.data
-  } catch (error) {
-    console.error(error)
+const firstComp = gql`
+  query {
+    homePosts {
+      data {
+        attributes {
+          Title
+          Description
+          Descript
+          Desc
+          SecondHeading
+        }
+      }
+    }
   }
-}
+`
+
+const { result, loading, error } = useQuery(firstComp)
+
+const posts = computed(() => {
+  if (loading.value || error.value) return []
+  return result.value?.homePosts.data.map((post: { attributes: any }) => post.attributes) ?? []
+})
 
 const getPostByIndex = (index: number): Post | undefined => {
   return posts.value[index]
 }
-
-onMounted(() => {
-  fetchPosts()
-})
 </script>
 
 <template>
@@ -50,10 +56,10 @@ onMounted(() => {
     <div class="w-full md:w-[45%]" v-if="posts.length">
       <div v-if="posts.length > 0">
         <h1 class="blinker-bold text-[#040e56] text-[3.5rem]">
-          {{ getPostByIndex(0)?.attributes.Title }}
+          {{ getPostByIndex(0)?.Title }}
         </h1>
         <p class="blinker-regular text-[#9b9b9b] text-[1.1rem] leading-7">
-          {{ getPostByIndex(0)?.attributes.Description }}
+          {{ getPostByIndex(0)?.Description }}
         </p>
       </div>
     </div>

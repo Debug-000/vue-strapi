@@ -6,16 +6,38 @@ import { RouterLink } from 'vue-router'
   <header class="max-w-[1140px] m-auto py-6">
     <div class="flex justify-between items-center">
       <div>
-        <img src="../assets/gqlteam.png" alt="site-logo" class="w-[14.2rem]" />
+        <RouterLink to="/">
+          <img src="../assets/gqlteam.png" alt="site-logo" class="w-[14.2rem]" />
+        </RouterLink>
       </div>
       <ul
         class="hidden md:flex justify-start items-center gap-8 py-2 px-4 text-[1.1rem] blinker-regular"
       >
-        <RouterLink to="/" class="text-white hover:text-[#813687]">Home</RouterLink>
-        <RouterLink to="/services" class="text-white hover:text-[#813687]">Services</RouterLink>
-        <RouterLink to="/showcase" class="text-white hover:text-[#813687]">Showcase</RouterLink>
-        <RouterLink to="/about" class="text-white hover:text-[#813687]">About us</RouterLink>
-        <RouterLink to="/contact" class="text-white hover:text-[#813687]">Contact</RouterLink>
+        <RouterLink to="/" v-slot="{ isActive }">
+          <span :class="[isActive ? 'text-[#813687]' : 'text-white', 'hover:text-[#813687]']"
+            >Home</span
+          >
+        </RouterLink>
+        <RouterLink to="/services" v-slot="{ isActive }">
+          <span :class="[isActive ? 'text-[#813687]' : 'text-white', 'hover:text-[#813687]']"
+            >Services</span
+          >
+        </RouterLink>
+        <RouterLink to="/showcase" v-slot="{ isActive }">
+          <span :class="[isActive ? 'text-[#813687]' : 'text-white', 'hover:text-[#813687]']"
+            >Showcase</span
+          >
+        </RouterLink>
+        <RouterLink to="/about" v-slot="{ isActive }">
+          <span :class="[isActive ? 'text-[#813687]' : 'text-white', 'hover:text-[#813687]']"
+            >About us</span
+          >
+        </RouterLink>
+        <RouterLink to="/contact" v-slot="{ isActive }">
+          <span :class="[isActive ? 'text-[#813687]' : 'text-white', 'hover:text-[#813687]']"
+            >Contact</span
+          >
+        </RouterLink>
       </ul>
     </div>
   </header>

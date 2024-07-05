@@ -8,8 +8,17 @@
         Dont hesitate <br />
         to ask a question
       </h1>
-      <a href="#" class="text-[#040e56] blinker-bold text-[1.7rem] mt-16">+40742223433</a>
-      <a href="#" class="text-[#040e56] blinker-bold text-[1.7rem] mt-4">info@gqlteam.com</a>
+      <a
+        href="tel:+40742223433"
+        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-16"
+      >
+        +40742223433</a
+      >
+      <a
+        href="mailto:info@gqlteam.com"
+        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-4"
+        >info@gqlteam.com</a
+      >
       <img
         src="../assets/Contact-Logo.png"
         alt="Contact-Logo"

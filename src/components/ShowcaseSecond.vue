@@ -1,20 +1,60 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import gql from 'graphql-tag'
+import { useQuery } from '@vue/apollo-composable'
+import { computed } from 'vue'
+
+interface Post {
+  Title: string
+  SubTitle: string
+  Description: string
+  Descript: string
+  Desc: string
+  FirstTable: string
+  SecondTable: string
+  ThirdTable: string
+}
+
+const firstComp = gql`
+  query {
+    showcasePosts {
+      data {
+        attributes {
+          Title
+          SubTitle
+          Description
+          Descript
+          Desc
+          FirstTable
+          SecondTable
+          ThirdTable
+        }
+      }
+    }
+  }
+`
+
+const { result, loading, error } = useQuery(firstComp)
+
+const posts = computed(() => {
+  if (loading.value || error.value) return []
+  return result.value?.showcasePosts.data.map((post: { attributes: any }) => post.attributes) ?? []
+})
+
+const getPostByIndex = (index: number): Post | undefined => {
+  return posts.value[index]
+}
+</script>
 
 <template>
-  <div class="flex flex-col gap-4 py-[9rem] px-4">
-    <h1 class="blinker-bold text-white text-[3.5rem]">lorem Ipsum</h1>
-    <div class="flex flex-col gap-4">
-      <p class="blinker-regular text-white leading-7">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae tempore veritatis, labore
-        nisi, inventore quibusdam quas voluptates nostrum dolor, mollitia commodi reprehenderit amet
-        nulla? Est repellat similique temporibus dolor dolores vitae consectetur recusandae ipsa
-        vero ratione voluptate consequatur et minima totam, corporis rerum. Voluptas atque ad sequi.
-        Tenetur, dicta. Cumque hic impedit commodi? Iste expedita corrupti, inventore voluptatem eos
-        libero minus non laborum rem. Inventore incidunt deleniti ducimus repellat adipisci omnis!
-        Inventore quas nesciunt soluta sequi qui sunt blanditiis assumenda, quos voluptatum
-        aspernatur accusantium necessitatibus consequuntur? Doloribus culpa iusto quos? Obcaecati
-        debitis, maxime ratione harum iste adipisci incidunt alias impedit.
-      </p>
+  <div v-if="posts.length">
+    <div class="flex flex-col gap-4 pb-[9rem] px-4" v-if="posts.length > 0">
+      <h1 class="blinker-bold text-white text-[3.5rem]">{{ getPostByIndex(1)?.Title }}</h1>
+      <div class="flex flex-col gap-4">
+        <p class="blinker-regular text-white leading-7">
+          {{ getPostByIndex(1)?.Description }}
+        </p>
+      </div>
+      <h2 class="blinker-bold text-white text-[2.5rem] mt-8">{{ getPostByIndex(1)?.SubTitle }}</h2>
     </div>
   </div>
 </template>
