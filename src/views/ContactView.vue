@@ -8,7 +8,7 @@ import HeaderText from '@/components/HeaderText.vue'
     <img
       src="../assets/overlay-right.png"
       alt="right"
-      class="absolute top-[-38rem] right-0 z-10 w-[160rem] h-[100rem] pointer-events-none"
+      class="absolute top-[-38rem] right-0 z-10 w-[160rem] h-[100rem] object-cover pointer-events-none"
     />
     <HeaderText title="Contact" desc="" />
   </div>

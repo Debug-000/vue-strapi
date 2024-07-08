@@ -9,7 +9,7 @@ import ShowcaseSecond from '@/components/ShowcaseSecond.vue'
     <img
       src="../assets/overlay-right.png"
       alt="right"
-      class="absolute top-[-38rem] right-0 z-10 w-[160rem] h-[100rem] pointer-events-none"
+      class="absolute top-[-38rem] right-0 z-10 w-[160rem] h-[100rem] object-cover pointer-events-none"
     />
     <HeaderText title="Showcase" desc="" />
   </div>
@@ -19,7 +19,7 @@ import ShowcaseSecond from '@/components/ShowcaseSecond.vue'
     </div>
   </div>
   <div class="sec-home relative h-auto overflow-hidden">
-    <div class="max-w-[1140px] m-auto">
+    <div class="max-w-[1340px] m-auto">
       <img
         src="../assets/overlay-right.png"
         alt="right"

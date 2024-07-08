@@ -10,14 +10,14 @@
       </h1>
       <a
         href="tel:+40742223433"
-        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-16"
+        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-16 flex items-center gap-4"
       >
-        +40742223433</a
+        <span class="pi pi-phone"></span> +40742223433</a
       >
       <a
         href="mailto:info@gqlteam.com"
-        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-4"
-        >info@gqlteam.com</a
+        class="text-[#040e56] hover:text-[#813687] blinker-bold text-[1.7rem] mt-4 flex items-center gap-4"
+        ><span class="pi pi-envelope"></span> info@gqlteam.com</a
       >
       <img
         src="../assets/Contact-Logo.png"
@@ -27,21 +27,21 @@
     </div>
     <div class="text-black shadow-lg w-full lg:w-[50%] p-12 m-4">
       <form class="flex flex-col justify-start items-start">
-        <label for="name">Your Name</label>
+        <label for="name">Your Name*</label>
         <input
           type="text"
           id="name"
           class="border border-[#d4d4d4] w-full p-2 outline-none mb-4"
           required
         />
-        <label for="email">Your Email</label>
+        <label for="email">Your Email*</label>
         <input
           type="email"
           id="email"
           class="border border-[#d4d4d4] w-full p-2 outline-none mb-4"
           required
         />
-        <label for="subject">Your Name</label>
+        <label for="subject">Your Name*</label>
         <input
           type="text"
           id="subject"
