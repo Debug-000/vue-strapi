@@ -38,39 +38,43 @@ const getPostByIndex = (index: number): Post | undefined => {
 </script>
 
 <template>
-  <div
-    class="md:flex-row flex-col flex justify-center items-center w-full gap-8 px-4 py-[8rem]"
-    v-if="posts.length"
-  >
-    <div class="w-full md:w-[45%]" v-if="posts.length > 0">
-      <h1 class="blinker-bold text-white text-[3.5rem]">{{ getPostByIndex(1)?.Title }}</h1>
-      <div class="flex flex-col gap-4">
-        <p class="blinker-regular text-white leading-7">
-          {{ getPostByIndex(1)?.Description }}
-        </p>
-        <p class="blinker-regular text-white leading-7">
-          {{ getPostByIndex(1)?.Descript }}
-        </p>
-        <p class="blinker-regular text-white leading-7">
-          {{ getPostByIndex(1)?.Desc }}
-        </p>
+  <p v-if="loading" class="text-white text-center">Loading...</p>
+  <p v-if="error" class="text-white text-center">{{ error }} Something went wrong!</p>
+  <div v-else>
+    <div
+      class="md:flex-row flex-col flex justify-center items-center w-full gap-8 px-4 py-[8rem]"
+      v-if="posts.length"
+    >
+      <div class="w-full md:w-[45%]" v-if="posts.length > 0">
+        <h1 class="blinker-bold text-white text-[3.5rem]">{{ getPostByIndex(1)?.Title }}</h1>
+        <div class="flex flex-col gap-4">
+          <p class="blinker-regular text-white leading-7">
+            {{ getPostByIndex(1)?.Description }}
+          </p>
+          <p class="blinker-regular text-white leading-7">
+            {{ getPostByIndex(1)?.Descript }}
+          </p>
+          <p class="blinker-regular text-white leading-7">
+            {{ getPostByIndex(1)?.Desc }}
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="relative w-full md:w-[60%] max-w-[33rem] h-[40rem]">
-      <img
-        src="../assets/multi-ethnic.jpg"
-        alt="multi"
-        class="w-[28rem] absolute top-0 right-0 h-[18rem] object-cover"
-      />
-      <img
-        src="../assets/asian-businessmen.jpg"
-        alt="asian"
-        class="w-[28rem] absolute top-[30%] left-0 h-[18rem] object-cover"
-      /><img
-        src="../assets/guys.jpg"
-        alt="asian"
-        class="w-[28rem] absolute bottom-0 right-0 h-[18rem] object-cover"
-      />
+      <div class="relative w-full md:w-[60%] max-w-[33rem] h-[40rem]">
+        <img
+          src="../assets/multi-ethnic.jpg"
+          alt="multi"
+          class="w-[28rem] absolute top-0 right-0 h-[18rem] object-cover"
+        />
+        <img
+          src="../assets/asian-businessmen.jpg"
+          alt="asian"
+          class="w-[28rem] absolute top-[30%] left-0 h-[18rem] object-cover"
+        /><img
+          src="../assets/guys.jpg"
+          alt="asian"
+          class="w-[28rem] absolute bottom-0 right-0 h-[18rem] object-cover"
+        />
+      </div>
     </div>
   </div>
 </template>
